@@ -12,11 +12,11 @@ mongoose.connect(DB,{useUnifiedTopology:true,useNewUrlParser:true}).then(()=>{
 })
 
 //
-app.use(cors({
-    origin:["https://balajifrontend.onrender.com/"],
-    methods:["POST","GET"],
-    Credential:true
-}))
+// app.use(cors({
+//     origin:["https://balajifrontend.onrender.com/"],
+//     methods:["POST","GET"],
+//     Credential:true
+// }))
 // if (process.env.NODE_ENV==="production"){
 //     app.use(express.static(path.join(__dirname,'/client/build')))
 //     app.get('*',(req,res)=>{
