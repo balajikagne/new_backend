@@ -13,7 +13,7 @@ router.post("/placeorder",async(req,res)=>{
         if (token.city=="pune"){
             const newOrder=new Order({
                 name:currentUser.name,
-                mobNumber:currentUser.mobNumber,
+                email:currentUser.mobNumber,
                 userid:currentUser._id,
                 orderItems:cartItems,
                 orderAmount:subtotal,
