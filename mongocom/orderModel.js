@@ -1,7 +1,7 @@
 const mongoose =require ("mongoose")
 const orderSchema=new mongoose.Schema({
     name:{type:String,require},
-    email:{type:String,require},
+    mobNumber:{type:String,require},
     userid:{type:String},
     orderItems:[],
     orderAmount:{type:Number},
