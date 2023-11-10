@@ -22,8 +22,7 @@ router.post("/placeorder",async(req,res)=>{
                     city:token.city
                     ,
                     pincode:token.pincode
-                    ,
-                    mobile:token.mobNumber
+                    
                 },
             });
             newOrder.save();
