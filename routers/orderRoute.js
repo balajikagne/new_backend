@@ -35,8 +35,9 @@ router.post("/placeorder",async(req,res)=>{
       res.status(400).json({
             message:'Something wend wrong',
             error:error.stack
-          console.log(error)
+          
         })
+        console.log(error)
     }
 })
 router.post("/getuserorder",async (req,res)=>{
