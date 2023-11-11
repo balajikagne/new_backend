@@ -3,7 +3,7 @@ const router=express.Router();
 const {v4:uuidv4}=require('uuid')
 const stripe=require("stripe")("sk_test_51NwHTvSHlzVzn0aLuKa3wFcz7By51dAz0kN5AINpVIplAeX1Ew2GhBjDtb71YYBRMT2R3p0k0Rotb26Nzd2JYMfV00ZnBS4bhe");
 const Order=require("../mongocom/orderModel")
-router.post("/placeorder",async(req,res)=>{
+router.post("/placeorder",(req,res)=>{
     const {token,subtotal,currentUser,cartItems}=req.body;
     try{
         // const customer=await stripe.customers.create({
@@ -25,7 +25,7 @@ router.post("/placeorder",async(req,res)=>{
                     
                 },
             });
-           await newOrder.save();
+           newOrder.save();
             res.send("PAYMENT SUCCESSFULLY")
         }else{
             res.send("PAYMENT FAILED")
