@@ -6,8 +6,10 @@ router.get('/getallitems',async (req,res)=>{
     try{
         const Item=await Items.find({});
         res.send(Item)
+        console.log(Item)
     }
     catch(error){
+        console.log("error")
         return res.status(400).json({message:error})
     }
 })
