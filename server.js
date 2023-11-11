@@ -5,7 +5,7 @@ const cors=require('cors')
 require('dotenv').config()
 const mongoose=require('mongoose')
 const DB=process.env.MODGODB
-mongoose.connect(DB .then(()=>{
+mongoose.connect(DB,{useUnifiedTopology:true,useNewUrlParser:true}) .then(()=>{
     console.log('connection successful')
 }).catch((err)=>{
     console.log("no connection",err)
