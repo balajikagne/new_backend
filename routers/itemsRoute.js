@@ -6,10 +6,10 @@ router.get('/getallitems',async (req,res)=>{
     try{
         const Item=await Items.find({});
         res.send(Item)
-        console.log(Item)
+     
     }
     catch(error){
-        console.log("error")
+        
         return res.status(400).json({message:error})
     }
 })
@@ -41,8 +41,7 @@ router.post('/additem',async (req,res)=>{
 
 router.post('/deleteitem',async (req,res)=>{
     const itemId=req.body.itemId;
-    console.log(itemId);
-    console.log("hellow world")
+   
     try{
 
         await Items.findOneAndDelete({_id:itemId})
