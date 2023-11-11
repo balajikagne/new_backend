@@ -26,9 +26,9 @@ router.post("/placeorder",async(req,res)=>{
                 },
             });
            newOrder.save();
-            res.send("PAYMENT SUCCESSFULLY")
+            res.send("User Registered successfully")
         }else{
-            res.send("PAYMENT FAILED")
+            return res.status(400).json({message:error})
         }
     }catch(error)
     {
