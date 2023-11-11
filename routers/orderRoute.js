@@ -10,9 +10,7 @@ router.post("/placeorder",async(req,res)=>{
         //     email:token.email,
         //     source:token.id
         // });
-        console.log(cartItems);
-        console.log(currentUser);
-        console.log(token.city);
+       
        
             const newOrder=new Order({
                 name:currentUser.name,
@@ -29,7 +27,7 @@ router.post("/placeorder",async(req,res)=>{
                 },
             });
            newOrder.save();
-            console.log(newOrder)
+         
             res.send("PAYMENT SUCCESSFULLY")
         
     }catch(error)
@@ -60,7 +58,7 @@ router.get("/getallorders",async (req,res)=>{
     try{
         const orders=await Order.find({})
         res.status(200).send(orders);
-        console.log(orders);
+        
     }
     catch(error){
         res.status(400).json({
@@ -77,7 +75,7 @@ router.post("/deliverorder",async (req,res)=>{
         orders.isDelivered=true
         await orders.save()
         res.status(200).send("order deliverd succussfully");
-        console.log(orders);
+       
     }
     catch(error){
         res.status(400).json({
