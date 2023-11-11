@@ -32,6 +32,7 @@ router.post("/placeorder",async(req,res)=>{
             res.send("PAYMENT SUCCESSFULLY")
         }else{
            res.send("PAYMENT FAILED")
+            console.log("if city")
         }
     }catch(error)
     {
