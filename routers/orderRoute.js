@@ -25,11 +25,7 @@ router.post("/placeorder",async(req,res)=>{
                     
                 },
             });
-            newOrder.save();
-            console.log(newOrder)
-            console.log(token)
-            console.log(currentUser)
-            console.log(cartItems)
+           await newOrder.save();
             res.send("PAYMENT SUCCESSFULLY")
         }else{
             res.send("PAYMENT FAILED")
