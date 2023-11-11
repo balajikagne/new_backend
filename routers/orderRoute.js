@@ -13,7 +13,7 @@ router.post("/placeorder",async(req,res)=>{
         console.log(cartItems);
         console.log(currentUser);
         console.log(token.city);
-        if (token.city==="pune"){
+       
             const newOrder=new Order({
                 name:currentUser.name,
                 mobNumber:currentUser.mobNumber,
@@ -31,10 +31,7 @@ router.post("/placeorder",async(req,res)=>{
            newOrder.save();
             console.log(newOrder)
             res.send("PAYMENT SUCCESSFULLY")
-        }else{
-           res.send("PAYMENT FAILED")
-            console.log("if city")
-        }
+        
     }catch(error)
     {
       res.status(400).json({
