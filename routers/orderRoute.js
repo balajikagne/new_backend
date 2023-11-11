@@ -29,7 +29,7 @@ router.post("/placeorder",async(req,res)=>{
                 },
             });
            newOrder.save();
-            res.send("User Registered successfully")
+            res.send("PAYMENT SUCESSFULL");
         }else{
             return res.status(400).json({message:error})
         }
