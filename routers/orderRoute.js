@@ -11,6 +11,7 @@ router.post("/placeorder",async(req,res)=>{
         //     source:token.id
         // });
         console.log(cartItems);
+        console.log(currentUser);
         if (token.city==="pune"){
             const newOrder=new Order({
                 name:currentUser.name,
