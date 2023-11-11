@@ -10,7 +10,7 @@ router.post("/placeorder",async(req,res)=>{
         //     email:token.email,
         //     source:token.id
         // });
-        if (token.city=="pune"){
+        if (token.city==="pune"){
             const newOrder=new Order({
                 name:currentUser.name,
                 mobNumber:currentUser.mobNumber,
