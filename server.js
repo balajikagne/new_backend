@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   next();
 })
 app.use(cors({
-    origin:["https://balajifrontend.onrender.com/"],
+    origin:["https://new-backend-balajikagne.vercel.app/"],
     methods:["POST","GET"],
     Credential:true
 }))
