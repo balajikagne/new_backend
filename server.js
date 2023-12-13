@@ -1,7 +1,7 @@
 const express = require("express")
 const app=express()
 const cors=require('cors')
-
+const port=process.env.PORT || PORT;
 require('dotenv').config()
 const mongoose=require('mongoose')
 const DB=process.env.MODGODB
@@ -62,7 +62,7 @@ app.get('/',(req,res)=>{
 //    }
 // })
 
-const port=process.env.PORT || PORT;
+
 
 app.listen(port,()=>{
     console.log("connected successfully :",port)
