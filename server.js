@@ -7,6 +7,9 @@ const mongoose=require('mongoose')
 const DB=process.env.MODGODB
 mongoose.connect(DB,{useUnifiedTopology:true,useNewUrlParser:true}) .then(()=>{
     console.log('connection successful')
+    app.listen(port,()=>{
+    console.log("connected successfully :",port)
+})
 }).catch((err)=>{
     console.log("no connection",err)
 })
