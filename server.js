@@ -4,12 +4,9 @@ const cors=require('cors')
 require('dotenv').config()
 const mongoose=require('mongoose')
 const DB=process.env.MODGODB
-const port=process.env.PORT || PORT;
+
 mongoose.connect(DB,{useUnifiedTopology:true,useNewUrlParser:true}) .then(()=>{
     console.log('connection successful')
-    // app.listen(port,()=>{
-    // console.log("connected successfully :",port)
-})
 }).catch((err)=>{
     console.log("no connection",err)
 })
@@ -63,7 +60,7 @@ app.get('/',(req,res)=>{
 // })
 
 
-
+const port=process.env.PORT || PORT;
 app.listen(port,()=>{
     console.log("connected successfully :",port)
 })
