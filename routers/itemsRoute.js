@@ -20,6 +20,15 @@ router.get('/getallitems',async (req,res)=>{
         console.log('hellow')
     }
 })
+router.get("/Notificationlist",async(req,res)=>{
+    try {
+        const Item = await nofify.find({});
+        res.send(Item);
+    }
+    catch(error){
+        return res.status(400).json({message:error})
+    }
+})
 router.post('/additem',async (req,res)=>{
     const {name,img,prices,rate}=req.body
     const newItems= new Items({name,img,prices,rate})
