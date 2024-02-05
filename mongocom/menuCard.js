@@ -5,8 +5,6 @@ const UoodSchema = new mongoose.Schema({
     _id: { type: mongoose.Schema.Types.ObjectId,auto: true },
     varients: [],
     prices: [],
-    Timer:{type:Number},
-    Status:{type:Boolean},
     img: { type: String, required: true },
     dsc: { type: String, required: true },
     rate: { type: Number, required: true },
