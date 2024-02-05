@@ -3,9 +3,29 @@ const router=express.Router();
 const Items=require('../mongocom/menuCard')
 const User=require("../mongocom/userModel");
 const nofify=require("../mongocom/nofityMe");
+const Beauty=require("../mongocom/beautyModel")
+
 router.get('/getallitems',async (req,res)=>{
     try {
         const Item = await Items.find({});
+        res.send(Item);
+    //    if (location.location==='scoe'){
+    //     const Item = await Items.find({location:'scoe'});
+    //     res.send(Item);
+    //    }
+    //    else if (location.location==='pict'){
+    //     const Item = await Items.find({location:'pict'});
+    //     res.send(Item);
+    //    }
+    }
+    catch(error){
+        return res.status(400).json({message:error})
+        console.log('hellow')
+    }
+})
+    router.get('/getallbeauty',async (req,res)=>{
+    try {
+        const Item = await Beauty.find({});
         res.send(Item);
     //    if (location.location==='scoe'){
     //     const Item = await Items.find({location:'scoe'});
