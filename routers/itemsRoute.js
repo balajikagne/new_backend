@@ -4,7 +4,7 @@ const Items=require('../mongocom/menuCard')
 const User=require("../mongocom/userModel");
 const nofify=require("../mongocom/nofityMe");
 const Beauty=require("../mongocom/beautyModel")
-
+const Timer=require("../mongocom/timerModel")
 router.get('/getallitems',async (req,res)=>{
     try {
         const Item = await Items.find({});
@@ -41,6 +41,62 @@ router.get('/getallitems',async (req,res)=>{
         console.log('hellow')
     }
 })
+const timers = {}; // Store timer data in memory
+
+router.get('/start-timer/:orderId', async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    // Create a new timer document for the order in MongoDB
+    await Timer.create({ orderId, timer: 2100}); // Set initial time (example: 5 minutes)
+
+    // Schedule a job to update the timer every second
+    const timerJob = setInterval(async () => {
+      // Retrieve the timer data from MongoDB
+      const timerDoc = await Timer.findOne({ orderId });
+
+      if (timerDoc && timerDoc.timer > 0) {
+        // Decrement the timer
+        await Timer.updateOne({ orderId }, { $set: { timer: timerDoc.timer - 1 } });
+
+      } else {
+        // If the timer has reached 0 or no timer document is found, clear the interval
+        clearInterval(timerJob);
+        return
+      }
+    }, 1000);
+
+    // Save the timer job in memory for future reference (e.g., to cancel it)
+    timers[orderId] = timerJob;
+
+    res.send('Timer started');
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+router.get('/get-timer/:orderId', async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    // Retrieve the timer data from MongoDB
+    const timerDoc = await Timer.findOne({ orderId });
+
+    // Use the stored timer value or default to 0
+    const remainingTime = timerDoc ? timerDoc.timer : 0;
+
+    if (remainingTime >= 0) {
+      res.json({ remainingTime });
+    } else {
+      res.status(400).json({ error: 'Invalid orderId' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 router.get("/Notificationlist",async(req,res)=>{
     try {
         const Item = await nofify.find({});
