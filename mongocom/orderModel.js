@@ -6,7 +6,8 @@ const orderSchema=new mongoose.Schema({
     orderItems:[],
     orderAmount:{type:Number},
     shippingAddress:{type:Object,require},
-    isDelivered:{type:Boolean,require,default:false}
+    isDelivered:{type:Boolean,require,default:false},
+    dateis: { type: String, default: () => new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }) }
 },{
     timestamps:true
 })
