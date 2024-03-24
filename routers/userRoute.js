@@ -26,7 +26,8 @@ router.post("/login",async(req,res)=>{
                 name:user[0].name,
                 mobNumber:user[0].mobNumber,
                 isAdmin:user[0].isAdmin,
-                _id:user[0]._id
+                _id:user[0]._id,
+                location:user[0].location
             }
             res.send(currentUser);
         }
