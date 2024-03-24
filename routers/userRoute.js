@@ -3,8 +3,8 @@ const router =express.Router();
 const User=require("../mongocom/userModel");
 
 router.post("/register",(req,res)=>{
-    const {name,mobNumber,password}=req.body
-    const newUser= new User({name,mobNumber,password})
+    const {name,mobNumber,password,location}=req.body
+    const newUser= new User({name,mobNumber,password,location})
 
     try {
         newUser.save()
