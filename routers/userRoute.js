@@ -30,6 +30,7 @@ router.post("/login",async(req,res)=>{
                 location:user[0].location
             }
             res.send(currentUser);
+            console.log(currentUser);
         }
         else{
             return res.status(400).json({message :'User Login Failed'});
